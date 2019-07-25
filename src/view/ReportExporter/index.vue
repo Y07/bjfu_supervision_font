@@ -4,7 +4,7 @@
     <h1>报告导出</h1>
     <br>
     <Form :label-width="80" :model="reportArgs" ref="reportForm" :rules="rules">
-      <FormItem label="学期" prop="term">
+      <FormItem label="学期" prop="term" v-role ="['管理员']">
         <Select v-model="reportArgs.term" style="width:200px">
           <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
         </Select>

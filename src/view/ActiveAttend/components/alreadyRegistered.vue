@@ -8,7 +8,7 @@
                       style="width:180px"
                       @on-search="handleSearchActivateName"></AutoComplete>
       </FormItem>
-      <FormItem label="学期：" :prop="'activity.term'">
+      <FormItem label="学期：" :prop="'activity.term'" >
         <Select v-model="query.term" style="width:200px">
           <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
         </Select>

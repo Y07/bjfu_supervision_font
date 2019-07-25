@@ -3,7 +3,7 @@
     <Card>
       <Row>
         <Form :label-width="80" :model="query" inline>
-        <FormItem label="学期：" prop="term">
+        <FormItem label="学期：" prop="term" v-role ="['管理员']">
           <Select v-model="query.term" style="width:200px">
             <Option v-for="item in terms" :value="item.name" :key="item.name" @on-change="onTermChange">{{ item.name }}</Option>
           </Select>
@@ -337,8 +337,8 @@ export default {
       this.pullLessons()
     },
     onTermChange: function (value) {
-      this.term =value
-      this.$router.push({name:this.$route.name, query:{term: this.term} })
+      this.term = value
+      this.$router.push({ name: this.$route.name, query: { term: this.term } })
     }
 
   },

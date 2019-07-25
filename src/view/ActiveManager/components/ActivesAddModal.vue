@@ -58,7 +58,7 @@
             </Col>
           </Row>
         </form-item>
-        <FormItem label="学期：" prop="term">
+        <FormItem label="学期：" prop="term" v-role ="['管理员']">
           <Select v-model="activity.term" style="width:200px">
             <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
           </Select>
@@ -80,9 +80,9 @@
 </template>
 
 <script>
-import {queryUsers} from '../../../service/api/user'
-import {queryTerms, getCurrentTerms} from '../../../service/api/term'
-import {queryActives} from '../../../service/api/actives'
+import { queryUsers } from '../../../service/api/user'
+import { queryTerms, getCurrentTerms } from '../../../service/api/term'
+import { queryActives } from '../../../service/api/actives'
 import { dateToString } from '@/libs/tools'
 export default {
   name: 'ActiveAddModal',
@@ -129,8 +129,8 @@ export default {
           trigger: 'change',
           message: '请选择日期',
           fields: {
-            start_time: {type: 'date', required: true, message: '请选择开始日期'},
-            end_time: {type: 'date', required: true, message: '请选择结束日期'}
+            start_time: { type: 'date', required: true, message: '请选择开始日期' },
+            end_time: { type: 'date', required: true, message: '请选择结束日期' }
           }
         }],
         all_num: [{ required: true, type: 'number', min: 1, trigger: 'change', message: '参与人数必须大于等于1' }],
@@ -143,8 +143,8 @@ export default {
           trigger: 'change',
           message: '请选择日期',
           fields: {
-            apply_start_time: {type: 'date', required: true, message: '请选择起始日期'},
-            apply_end_time: {type: 'date', required: true, message: '请选择截止日期'}
+            apply_start_time: { type: 'date', required: true, message: '请选择起始日期' },
+            apply_end_time: { type: 'date', required: true, message: '请选择截止日期' }
           }
         }]
       }
@@ -211,7 +211,7 @@ export default {
       this.$emit('onCancel')
     },
     onSelectTeacherChange: function (query) {
-      this.queryUsers({name_like: query}).then((resp) => {
+      this.queryUsers({ name_like: query }).then((resp) => {
         this.users = resp.data.users // 关键词编号重新加载 xxx_like 对 XXX模糊查
       })
     }

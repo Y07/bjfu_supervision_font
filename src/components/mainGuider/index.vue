@@ -1,9 +1,10 @@
 <style scoped lang="less">
-  .ivu-layout-header{
+  .ivu-layout-header {
     padding: 0px;
     background-color: #ffffff;
   }
-  .layout{
+
+  .layout {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
@@ -11,13 +12,15 @@
     overflow: scroll;
     height: 100%;
   }
-  .content-wrapper{
+
+  .content-wrapper {
     padding: 19px;
     min-height: 650px;
     height: ~"calc(100% - 80px)";
     overflow: scroll;
   }
-  .layout-logo{
+
+  .layout-logo {
     width: 100px;
     height: 30px;
     background: #f3fffe;
@@ -27,12 +30,14 @@
     top: 15px;
     left: 20px;
   }
-  .layout-nav{
+
+  .layout-nav {
     width: 100%;
     margin: 0 auto;
     margin-right: 0px;
   }
-  .layout-footer-center{
+
+  .layout-footer-center {
     text-align: center;
   }
 </style>
@@ -40,43 +45,55 @@
   <div style="height: 100%">
     <Layout>
       <Header>
-        <Menu  mode="horizontal" theme="primary" :active-name="activity_name" @on-select="onMenuSelect">
+        <Menu mode="horizontal" theme="primary" :active-name="activity_name" @on-select="onMenuSelect">
           <div class="layout-nav">
-            <template >
-              <MenuItem name="lesson_model" v-role ="['督导','管理员']">
-                <Icon type="ios-keypad" />
-                好评课堂
-              </MenuItem>
-              <MenuItem name="judge" v-role ="['督导','管理员']">
-                <Icon type="ios-paper" />
-                评价填写
-              </MenuItem>
-              <MenuItem name="lesson_form" v-role ="['督导','管理员']">
-                <Icon type="ios-construct" />
-                课程表
-              </MenuItem>
-              <MenuItem name="my_form" v-role ="['督导','管理员']">
-                <Icon type="ios-construct" />
-                我的评价
-              </MenuItem>
-            </template>
+            <MenuItem name="notice_lesson" v-role="['督导','管理员']">
+              <Icon type="ios-paper"/>
+              学期重点关注
+            </MenuItem>
+            <MenuItem name="lesson_model" v-role="['督导','管理员']">
+              <Icon type="ios-keypad"/>
+              好评课堂
+            </MenuItem>
+            <MenuItem name="lesson_form" v-role="['督导','管理员']">
+              <Icon type="ios-construct"/>
+              课程表
+            </MenuItem>
+            <MenuItem name="judge" v-role="['督导','管理员']">
+              <Icon type="ios-paper"/>
+              填评价表
+            </MenuItem>
 
-          <MenuItem name="attend">
-            <Icon type="ios-people" />
-            活动报名
-          </MenuItem>
-          <MenuItem name="consult_apply">
-            <Icon type="ios-construct" />
-            咨询申请
-          </MenuItem>
+            <MenuItem name="my_form" v-role="['督导','管理员']">
+              <Icon type="ios-construct"/>
+              已做评价
+            </MenuItem>
+
+            <MenuItem name="leader_lookup" v-role="['督导','管理员']">
+              <Icon type="ios-construct"/>
+              学院教学院长
+            </MenuItem>
+
+            <MenuItem name="attend">
+              <Icon type="ios-people"/>
+              活动报名
+            </MenuItem>
+            <MenuItem name="consult_apply">
+              <Icon type="ios-construct"/>
+              咨询申请
+            </MenuItem>
           </div>
+
           <user :user-avator="userAvator" style="float: right; margin-right: 40px"/>
           <userNotices style="margin-right: 10px; float: right;color: #E6EFFA"></userNotices>
-          <language v-if="$config.useI18n" @on-lang-change="setLocal" style="margin-right: 10px; float: right;color:#E6EFFA" :lang="local"/>
+          <language v-if="$config.useI18n" @on-lang-change="setLocal"
+                    style="margin-right: 10px; float: right;color:#E6EFFA" :lang="local"/>
           <!--<error-store v-if="$config.plugin['error-store'] && $config.plugin['error-store'].showInHeader" :has-read="hasReadErrorPage" :count="errorCount" style="float: right; margin-right: 10px;color:#E6EFFA"></error-store>-->
           <fullscreen v-model="isFullscreen" style="margin-right: 10px; float: right;color:#E6EFFA"/>
-          <span @click="handleClickToAdmin" style="margin-right: 10px; float: right;color:#E6EFFA"  v-role ="['管理员', '领导', '小组长', '大组长']"> 切换到管理员端 </span>
+          <span @click="handleClickToAdmin" style="margin-right: 10px; float: right;color:#E6EFFA"
+                v-role="['管理员', '学院领导', '小组长', '大组长']"> 切换到管理员端 </span>
         </Menu>
+
       </Header>
       <Content class="content-wrapper">
         <router-view/>
@@ -112,7 +129,7 @@ export default {
       // minLogo,
       // maxLogo,
       isFullscreen: false,
-      activity_name: 'judge'
+      activity_name: 'consult_apply'
     }
   },
   computed: {
@@ -198,9 +215,8 @@ export default {
     }
   },
   mounted () {
-    debugger
     if (this.$route.path === '/_guider') {
-      this.$router.replace('/_guider/judge')
+      this.$router.replace('/_guider/consult_apply')
     }
     console.log(this)
     this.highlightMenu()

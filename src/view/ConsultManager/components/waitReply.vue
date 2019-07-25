@@ -3,7 +3,7 @@
     <h1>咨询管理</h1>
     <br>
     <Form :label-width="80" :model="query" inline>
-      <FormItem label="学期：" prop="term">
+      <FormItem label="学期：" prop="term" >
         <Select v-model="query.term" style="width:200px">
           <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
         </Select>

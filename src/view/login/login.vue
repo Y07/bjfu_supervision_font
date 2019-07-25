@@ -18,10 +18,12 @@
 import LoginForm from '_c/login-form'
 import { mapActions } from 'vuex'
 import { loginUser } from '@/service/api/user'
+import UserMixin from '@/mixins/UserMixin.js'
 export default {
   components: {
     LoginForm
   },
+  mixin: { UserMixin },
   methods: {
     ...mapActions([
       'handleLogin',

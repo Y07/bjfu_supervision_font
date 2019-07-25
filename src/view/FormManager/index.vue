@@ -8,7 +8,7 @@
       <TabPane  name="草稿" label="草稿"></TabPane>
     </Tabs>
     <Form :label-width="80" :model="query" inline>
-      <FormItem label="学期：" prop="meta.term">
+      <FormItem label="学期：" prop="meta.term" v-role ="['管理员']">
         <Select v-model="query.meta.term" style="width:200px" clearable	>
           <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
         </Select>

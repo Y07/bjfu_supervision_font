@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import router from '@/router'
+
 var bus = new Vue()
 export function requestSuccessFunc (requestObj) {
   console.info('requestInterceptorFunc', `url: ${requestObj.url}`, requestObj)
@@ -52,7 +54,11 @@ export function responseFailFunc (responseError) {
 
   switch (stauts) {
     case 401:
-      bus.$bus.$emit('global.message.warning', '未登陆')
+      bus.$bus.$emit('global.message.warning', '未登录请先登录')
+      break
+    case 403:
+      bus.$bus.$emit('global.message.warning', responseError.response.data.msg)
+      break
     case 200: break
     default:
       bus.$bus.$emit('global.message.error', '系统异常')

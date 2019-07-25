@@ -49,5 +49,6 @@ export default{
       },
       component: resolve => require(['Views/LessonForm/index'], resolve)
     }
+
   ]
 }

@@ -9,7 +9,7 @@
         </Input>
         </FormItem>
 
-        <FormItem label="学期：" prop="term">
+        <FormItem label="学期：" prop="term" v-role ="['管理员']">
           <Select v-model="query.term" style="width:200px">
             <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
           </Select>

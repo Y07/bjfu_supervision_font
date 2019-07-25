@@ -4,7 +4,7 @@
       <Row>
         <Col span="6">
           学期：
-          <Select v-model="query.meta.term" style="width:200px">
+          <Select v-model="query.meta.term" style="width:200px" v-role ="['管理员']">
             <Option v-for="item in terms" :value="item.name" :key="item.name">{{ item.name }}</Option>
           </Select>
         </Col>

@@ -1,6 +1,10 @@
 <template>
-  <div style="width: 1079px">
-    <Table stripe :columns="columns" :data="work_plans"></Table>
+  <div style="text-align: center">
+    <Row>
+      <Col :span="20" offset="2">
+        <Table stripe :columns="columns" :data="work_plans"></Table>
+      </Col>
+    </Row>
     <div style="float: right;padding-top: 100px">
       <Button type="primary" @click="handlePlanAdd(term.name)">新增</Button>
     </div>
